@@ -1,5 +1,5 @@
 <div class="list-group">
-    <a href="#" (click)="onSelected()" class="list-group-item list-group-item-action flex-column align-item-start">
+    <a style="cursor: pointer" [routerLink]="[id]" routerLinkActive="active" class="list-group-item list-group-item-action flex-column align-item-start">
         <div class="d-flex justify-content-between">
             <div>
                 <h6>{{recipe.name}}</h6>
