@@ -87,7 +87,6 @@ export class RecipeEditComponent implements OnInit {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     else
       this.recipeService.addRecipe(this.recipeForm.value);
-    console.log(this.recipeForm);
     this.onCancel();
   }
 
@@ -97,6 +96,10 @@ export class RecipeEditComponent implements OnInit {
 
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route})
+  }
+
+  get getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients'));
   }
 
 }
