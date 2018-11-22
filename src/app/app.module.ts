@@ -14,6 +14,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/ngrx/shopping-list.reducers';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,13 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    ShoppingListModule,
     AuthModule,
+    ShoppingListModule,
+    CoreModule,
     AppRoutingModule,
-    CoreModule
+    StoreModule.forRoot({
+      shoppingList: shoppingListReducer
+    })
   ],
   providers: [
     ShoppingListService,
