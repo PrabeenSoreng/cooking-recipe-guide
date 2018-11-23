@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { ShoppingListService } from './services/shopping-list.service';
@@ -18,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
 import { reducers } from './store/app.reducres';
 import { AuthEffects } from './auth/store/auth.effects';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { AuthEffects } from './auth/store/auth.effects';
     CoreModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
     ShoppingListService,
