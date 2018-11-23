@@ -17,11 +17,8 @@ export class DataStorageService {
     private authService: AuthService) { }
 
   storeRecipes() {
-    const token = this.authService.getIdToken();
-
     return this.httpClient.put('https://ng-recipe-book-7281c.firebaseio.com/recipes.json', this.recipeService.getRecipes(), {
-      observe: 'body',
-      params: new HttpParams().set('auth', token)
+      observe: 'body'
     })
       .subscribe(
         (response: Response) => {
@@ -31,11 +28,9 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    const token = this.authService.getIdToken();
-
     return this.httpClient.get<Recipe[]>('https://ng-recipe-book-7281c.firebaseio.com/recipes.json', {
       observe: 'body',
-      params: new HttpParams().set('auth', token)
+      responseType: 'json'
     }).pipe(
       map(
         (recipes) => {
