@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { ShoppingListService } from './services/shopping-list.service';
@@ -14,8 +16,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
-import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.reducres';
+import { AuthEffects } from './auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { reducers } from './store/app.reducres';
     ShoppingListModule,
     CoreModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [
     ShoppingListService,

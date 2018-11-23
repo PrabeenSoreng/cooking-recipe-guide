@@ -38,8 +38,8 @@ export class AuthService {
             .catch(error => console.log(error))
     }
 
-    logout() {
-        firebase.auth().signOut();
-        this.store.dispatch(new AuthActions.Logout());
-    }
+    // logout() {
+    //     firebase.auth().signOut();
+    //     this.store.dispatch(new AuthActions.Logout());
+    // }
 }
