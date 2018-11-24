@@ -41,10 +41,10 @@ import { environment } from '../environments/environment';
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
-    ShoppingListService,
-    RecipeService,
-    DataStorageService,
-    AuthService,
+    // ShoppingListService,
+    // RecipeService,
+    // DataStorageService,
+    // AuthService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
